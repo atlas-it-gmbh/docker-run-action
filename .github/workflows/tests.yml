@@ -15,7 +15,7 @@ jobs:
         uses: ./
         id: run-docker
         with:
-          image: docker:20.10.3
+          image: docker:24.0.7
           run: |
             echo "::set-output name=docker-version::`echo $DOCKER_VERSION`"
       - name: Test the output
@@ -23,7 +23,7 @@ jobs:
         with:
           script: |
             const dockerVersion = '${{ steps.run-docker.outputs.docker-version }}';
-            if (dockerVersion !== '20.10.3') {
+            if (dockerVersion !== '24.0.7') {
               core.setFailed(`Smoke Test Failed`);
             }
   volume-mount-test:
